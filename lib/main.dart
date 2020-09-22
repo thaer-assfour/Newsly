@@ -5,15 +5,28 @@ import 'screens/WelcomeScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool isRunBefore = prefs.getBool('runBefore');
+  Widget _screen;
+  if (isRunBefore == null || isRunBefore == false)
+    _screen = WelcomeScreen();
+  else
+    _screen = HomeScreen();
 
-
-  runApp(Newsly());
+  runApp(Newsly(_screen));
 
 }
 
 class Newsly extends StatefulWidget {
+  final Widget screen;
+
+
+
   @override
   _NewslyState createState() => _NewslyState();
+
+  Newsly(this.screen);
 }
 
 class _NewslyState extends State<Newsly> {
@@ -37,7 +50,7 @@ class _NewslyState extends State<Newsly> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: isFirstRun ? WelcomeScreen() : HomeScreen(),
+      home: widget.screen,
     );
   }
 }
