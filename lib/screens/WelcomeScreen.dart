@@ -1,5 +1,6 @@
 
 import 'dart:ui';
+import 'package:newsly/screens/HomeScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -64,7 +65,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           borderRadius: new BorderRadius.circular(30)),
                       onPressed: () async {
                         final prefs = await SharedPreferences.getInstance();
-                        prefs.setBool('runBefore', true); // set value to not shown welcome screen if the program loaded before
+                        prefs.setBool('runBefore', true); // set// value to not shown welcome screen if the program loaded before
+                      Navigator.push(context, MaterialPageRoute(builder: (context){return HomeScreen();}));
                       },
                       child: Text(
                         "Get Started",
