@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scrolling_page_indicator/scrolling_page_indicator.dart';
 
+import '../var.dart';
+
 class WelcomeScreen extends StatefulWidget {
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
@@ -43,8 +45,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ScrollingPageIndicator( // plugin
-                    dotColor: Colors.white,
-                    dotSelectedColor: Colors.red,
+                    dotColor: themeColor[1],
+                    dotSelectedColor: themeColor[0],
                     dotSize: 8,
                     dotSelectedSize: 12,
                     dotSpacing: 24,
@@ -60,7 +62,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     height: 48,
                     decoration: BoxDecoration(),
                     child: RaisedButton(
-                      color: Colors.tealAccent,
+                      color:themeColor[0],
                       shape: RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(30)),
                       onPressed: () async {
@@ -74,7 +76,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           fontStyle: FontStyle.normal,
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
-                          color: Colors.red,
+                          color: themeColor[3],
                         ),
                       ),
                     ),
@@ -114,7 +116,7 @@ Widget welcome(int id, String title) {
             style: GoogleFonts.lato(
                 fontStyle: FontStyle.italic,
                 decoration: TextDecoration.none,
-                color: Colors.tealAccent),
+                color: themeColor[0]),
             textAlign: TextAlign.center,
           ))
     ],
